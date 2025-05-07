@@ -141,6 +141,19 @@
       document.getElementById(pageId).style.display = "block";
     }
     const gameList = document.getElementById("gameList");
+    let gameUrls = {
+        'snake': 'https://play.snake-game.io/',
+        'flappy': 'https://flappybird.io/',
+        'runner': 'https://games.cdn.famobi.com/html5games/p/pixel-runner/v200/?fg_domain=play.famobi.com',
+        'brick': 'https://games.cdn.famobi.com/html5games/b/brick-breaker/v040/?fg_domain=play.famobi.com',
+        '2048': 'https://play2048.co/',
+        'tic': 'https://playtictactoe.org/',
+        'mines': 'https://minesweeper.online/',
+        'space': 'https://playclassic.games/games/shoot-em-up/galaga/',
+        'frog': 'https://froggerclassic.appspot.com/',
+        'racing': 'https://html5.gamedistribution.com/rvvASMiB/36/',
+        'pong': 'https://ponggame.org/'
+    };
     gameUrls.forEach(game => {
       const card = document.createElement("div");
       card.className = "gameCard";
@@ -149,33 +162,19 @@
       gameList.appendChild(card);
     });
     function loadGame(game) {
-            let gameUrls = {
-                'snake': 'https://play.snake-game.io/',
-                'flappy': 'https://flappybird.io/',
-                'runner': 'https://games.cdn.famobi.com/html5games/p/pixel-runner/v200/?fg_domain=play.famobi.com',
-                'brick': 'https://games.cdn.famobi.com/html5games/b/brick-breaker/v040/?fg_domain=play.famobi.com',
-                '2048': 'https://play2048.co/',
-                'tic': 'https://playtictactoe.org/',
-                'mines': 'https://minesweeper.online/',
-                'space': 'https://playclassic.games/games/shoot-em-up/galaga/',
-                'frog': 'https://froggerclassic.appspot.com/',
-                'racing': 'https://html5.gamedistribution.com/rvvASMiB/36/',
-                'pong': 'https://ponggame.org/'
-            };
-
-            if (gameUrls[game]) {
-                document.getElementById("gameFrame").src = gameUrls[game];
-                document.getElementById("gameFrame").style.display = "block";
-                document.querySelector(".game-list").style.display = "none";
-                document.querySelector(".back-btn").style.display = "block";
-            }
+        if (gameUrls[game]) {
+            document.getElementById("gameFrame").src = gameUrls[game];
+            document.getElementById("gameFrame").style.display = "block";
+            document.querySelector(".game-list").style.display = "none";
+            document.querySelector(".back-btn").style.display = "block";
         }
+    }
 
-        function goBack() {
-            document.getElementById("gameFrame").style.display = "none";
-            document.querySelector(".game-list").style.display = "flex";
-            document.querySelector(".back-btn").style.display = "none";
-        }
+    function goBack() {
+        document.getElementById("gameFrame").style.display = "none";
+        document.querySelector(".game-list").style.display = "flex";
+        document.querySelector(".back-btn").style.display = "none";
+    }
     updatePointsDisplays();
   </script>
 </body>
