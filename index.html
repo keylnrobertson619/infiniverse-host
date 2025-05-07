@@ -1,1 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Infiniverse Host 🚀</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      background-color: #111;
+      color: white;
+      margin: 0;
+      padding: 20px;
+    }
+
+    #nav {
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 15px;
+      margin: 5px;
+      background: #00ffff;
+      border: none;
+      color: #111;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: lime;
+    }
+
+    #gameList {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .gameCard {
+      width: 200px;
+      padding: 10px;
+      background: #222;
+      border: 2px solid cyan;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .gameCard:hover {
+      background: limegreen;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <h1>🚀 Infiniverse Host</h1>
+  <p>Create, play, and share your own games!</p>
+
+  <div id="nav">
+    <button onclick="showPage('home')">🏠 Home</button>
+    <button onclick="showPage('games')">🎮 Games</button>
+    <button onclick="showPage('donate')">💰 Donate</button>
+    <button onclick="showPage('vip')">⭐ VIP</button>
+    <button onclick="showPage('settings')">⚙️ Settings</button>
+  </div>
+
+  <!-- Page Sections -->
+  <div id="home" class="page">
+    <h2>🎮 Welcome to Infiniverse!</h2>
+    <p>Start by selecting a section above.</p>
+  </div>
+
+  <div id="games" class="page" style="display:none">
+    <h2>🎮 Game List</h2>
+    <div id="gameList"></div>
+  </div>
+
+  <div id="donate" class="page" style="display:none">
+    <h2>💰 Donate Points</h2>
+    <input type="number" id="donateAmount" placeholder="Points to donate" />
+    <button onclick="donatePoints()">Donate</button>
+    <p>Your points: <span id="pointsDonate">0</span></p>
+  </div>
+
+  <div id="vip" class="page" style="display:none">
+    <h2>⭐ VIP Code</h2>
+    <input type="text" id="vipCode" placeholder="Enter VIP Code" />
+    <button onclick="redeemCode()">Redeem</button>
+    <p>Your points: <span id="pointsVIP">0</span></p>
+  </div>
+
+  <div id="settings" class="page" style="display:none">
+    <h2>⚙️ Settings</h2>
+    <label>
+      <input type="checkbox" id="friendlyMode" />
+      Enable Friendly Mode
+    </label>
+    <p>(Coming soon: chat filters, custom UI)</p>
+  </div>
+
+  <script>
+    let points = parseInt(localStorage.getItem("points")) || 100;
+    const correctVIP = "VIPFREE";
+
+    function updatePointsDisplays() {
+      document.getElementById("pointsDonate").textContent = points;
+      document.getElementById("pointsVIP").textContent = points;
+    }
+
+    function donatePoints() {
+      const amount = parseInt(document.getElementById("donateAmount").value);
+      if (amount > 0 && amount <= points) {
+        points -= amount;
+        localStorage.setItem("points", points);
+        updatePointsDisplays();
+        alert(`🎁 You donated ${amount} points!`);
+      } else {
+        alert("❌ Not enough points.");
+      }
+    }
+
+    function redeemCode() {
+      const code = document.getElementById("vipCode").value;
+      if (code === correctVIP) {
+        points += 1000;
+        localStorage.setItem("points", points);
+        updatePointsDisplays();
+        alert("✅ VIP Code Redeemed! +1000 Points");
+      } else {
+        alert("❌ Invalid Code");
+      }
+    }
+
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(p => p.style.display = "none");
+      document.getElementById(pageId).style.display = "block";
+    }
+
+    const games = [
+      { name: "Neon Racer X", url: "#" },
+      { name: "Battle Royale Arena", url: "#" },
+      { name: "Infinite City Builder", url: "#" }
+    ];
+
+    const gameList = document.getElementById("gameList");
+    games.forEach(game => {
+      const card = document.createElement("div");
+      card.className = "gameCard";
+      card.textContent = game.name;
+      card.onclick = () => alert(`🔗 Would launch: ${game.name}`);
+      gameList.appendChild(card);
+    });
+
+    updatePointsDisplays();
+  </script>
+</body>
+</html>
 
