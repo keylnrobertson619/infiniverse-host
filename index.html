@@ -75,8 +75,7 @@
 
   <div id="games" class="page" style="display:none">
     <h2>🎮 Game List</h2>
-    <div id="gameList"></div>
-    <iframe id="gameDisplay" src="game-hub.html" width="600" height="400" style="border:none;"></iframe>
+    <div id="gameList"></div>    
   </div>
 
   <div id="donate" class="page" style="display:none">
@@ -139,22 +138,42 @@
       document.querySelectorAll('.page').forEach(p => p.style.display = "none");
       document.getElementById(pageId).style.display = "block";
     }
-
-    const games = [
-      { name: "Pixel-Runner", url: "pixel-runner.html" },
-      { name: "Game Hub", url: "game-hub.html" },
-      { name: "Infinite City Builder", url: "#" }
-    ];
-
     const gameList = document.getElementById("gameList");
-    games.forEach(game => {
+    gameUrls.forEach(game => {
       const card = document.createElement("div");
       card.className = "gameCard";
-      card.textContent = game.name;
-      card.onclick = () => document.getelementbyid("gameDisplay").src=${game.url};
+      card.textContent = game;
+      card.onclick = () => loadGame(game)};
       gameList.appendChild(card);
     });
+    function loadGame(game) {
+            let gameUrls = {
+                'snake': 'https://play.snake-game.io/',
+                'flappy': 'https://flappybird.io/',
+                'runner': 'https://games.cdn.famobi.com/html5games/p/pixel-runner/v200/?fg_domain=play.famobi.com',
+                'brick': 'https://games.cdn.famobi.com/html5games/b/brick-breaker/v040/?fg_domain=play.famobi.com',
+                '2048': 'https://play2048.co/',
+                'tic': 'https://playtictactoe.org/',
+                'mines': 'https://minesweeper.online/',
+                'space': 'https://playclassic.games/games/shoot-em-up/galaga/',
+                'frog': 'https://froggerclassic.appspot.com/',
+                'racing': 'https://html5.gamedistribution.com/rvvASMiB/36/',
+                'pong': 'https://ponggame.org/'
+            };
 
+            if (gameUrls[game]) {
+                document.getElementById("gameFrame").src = gameUrls[game];
+                document.getElementById("gameFrame").style.display = "block";
+                document.querySelector(".game-list").style.display = "none";
+                document.querySelector(".back-btn").style.display = "block";
+            }
+        }
+
+        function goBack() {
+            document.getElementById("gameFrame").style.display = "none";
+            document.querySelector(".game-list").style.display = "flex";
+            document.querySelector(".back-btn").style.display = "none";
+        }
     updatePointsDisplays();
   </script>
 </body>
