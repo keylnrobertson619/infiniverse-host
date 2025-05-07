@@ -154,11 +154,11 @@
         'racing': 'https://html5.gamedistribution.com/rvvASMiB/36/',
         'pong': 'https://ponggame.org/'
     };
-    gameUrls.forEach(game => {
+    for (let [key, value] of Object.entries(gameUrls)) {
       const card = document.createElement("div");
       card.className = "gameCard";
-      card.textContent = game;
-      card.onclick = () => {loadGame(game)};
+      card.textContent = key;
+      card.onclick = () => {loadGame(key)};
       gameList.appendChild(card);
     });
     function loadGame(game) {
