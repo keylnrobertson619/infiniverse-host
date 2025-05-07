@@ -76,7 +76,7 @@
   <div id="games" class="page" style="display:none">
     <h2>🎮 Game List</h2>
     <div id="gameList"></div>
-    <div html="game-hub.html"></div>
+    <iframe id="gameDisplay" src="game-hub.html" width="600" height="400" style="border:none;"></iframe>
   </div>
 
   <div id="donate" class="page" style="display:none">
@@ -142,7 +142,7 @@
 
     const games = [
       { name: "Pixel-Runner", url: "pixel-runner.html" },
-      { name: "Battle Royale Arena", url: "#" },
+      { name: "Game Hub", url: "game-hub.html" },
       { name: "Infinite City Builder", url: "#" }
     ];
 
@@ -151,7 +151,7 @@
       const card = document.createElement("div");
       card.className = "gameCard";
       card.textContent = game.name;
-      card.onclick = () => alert(`🔗 Would launch: ${game.name}`);
+      card.onclick = () => document.getelementbyid("gameDisplay").src=${game.url};
       gameList.appendChild(card);
     });
 
