@@ -66,7 +66,7 @@
     <button onclick="showPage('vip')">⭐ VIP</button>
     <button onclick="showPage('settings')">⚙️ Settings</button>
   </div>
-
+  <button class="back-btn" onclick="goBack()">🔙 Back to Menu</button>
   <!-- Page Sections -->
   <div id="home" class="page">
     <h2>🎮 Welcome to Infiniverse!</h2>
@@ -100,7 +100,7 @@
     </label>
     <p>(Coming soon: chat filters, custom UI)</p>
   </div>
-
+  <iframe id="gameFrame"></iframe>
   <script>
     let points = parseInt(localStorage.getItem("points")) || 100;
     const correctVIP = "VIPFREE";
