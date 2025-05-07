@@ -145,7 +145,7 @@
       const card = document.createElement("div");
       card.className = "gameCard";
       card.textContent = game;
-      card.onclick = () => loadGame(game)};
+      card.onclick = () => {loadGame(game)};
       gameList.appendChild(card);
     });
     function loadGame(game) {
