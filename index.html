@@ -7,50 +7,59 @@
   <title>Infiniverse Host 🚀</title>
 </head>
 <body>
-  <h1>🚀 Infiniverse Host</h1>
-  <p>To Infinity and Beyond!!</p>
-
-  <div id="nav">
-    <button onclick="showPage('home')">🏠 Home</button>
-    <button onclick="showPage('games')">🎮 Games</button>
-    <button onclick="showPage('donate')">💰 Donate</button>
-    <button onclick="showPage('vip')">⭐ VIP</button>
-    <button onclick="showPage('settings')">⚙️ Settings</button>
-  </div> 
+  <div id="header">
+    <div id="titlecontainer">
+      <span id="title">🚀 Infiniverse Host</span>
+      <span id="subtitle">To Infinity and Beyond!!</span>
+    </div>
+    <div id="nav">
+      <button onclick="showPage('home')">🏠 Home</button>
+      <button onclick="showPage('games')">🎮 Games</button>
+      <button onclick="showPage('donate')">💰 Donate</button>
+      <button onclick="showPage('vip')">⭐ VIP</button>
+      <button onclick="showPage('settings')">⚙️ Settings</button>
+    </div> 
+  </div>  
   <!-- Page Sections -->
-  <div id="home" class="page">
-    <h2>🎮 Welcome to Infiniverse!</h2>
-    <p>Start by selecting a section above.</p>
-  </div>
+  <div id="main">
+    <div id="home" class="page">
+      <div class="pageTitle">🎮 Welcome to Infiniverse!</div>
+      <p>Start by selecting a section above.</p>
+    </div>
 
-  <div id="games" class="page" style="display:none">
-    <h2>🎮 Game List</h2>
-    <div id="gameList"></div>    
-    <button id="back-btn" onclick="goBack()">🔙 Back to Menu</button>
-    <iframe id="gameFrame"></iframe>
-  </div>
+    <div id="games" class="page" style="display:none">      
+      <div id="gamesContainer">
+        <div class="pageTitle">🎮 Game List</div>
+        <div id="gamesLowerContainer">
+          <div id="gameList"></div>  
+          <iframe id="gameFrame"></iframe>
+          <button id="back-btn" onclick="goBack()">🔙Exit Game</button>
+        </div>
+      </div>
+    </div>
 
-  <div id="donate" class="page" style="display:none">
-    <h2>💰 Donate Points</h2>
-    <input type="number" id="donateAmount" placeholder="Points to donate" />
-    <button onclick="donatePoints()">Donate</button>
-    <p>Your points: <span id="pointsDonate">0</span></p>
-  </div>
+    <div id="donate" class="page" style="display:none">
+      <div class="pageTitle">💰 Donate Points</div>
+      <input type="number" id="donateAmount" placeholder="Points to donate" />
+      <button onclick="donatePoints()">Donate</button>
+      <p>Your points: <span id="pointsDonate">0</span></p>
+    </div>
 
-  <div id="vip" class="page" style="display:none">
-    <h2>⭐ VIP Code</h2>
-    <input type="text" id="vipCode" placeholder="Enter VIP Code" />
-    <button onclick="redeemCode()">Redeem</button>
-    <p>Your points: <span id="pointsVIP">0</span></p>
-  </div>
+    <div id="vip" class="page" style="display:none">
+      <div class="pageTitle">⭐ VIP Code</div>
+      <input type="text" id="vipCode" placeholder="Enter VIP Code" />
+      <button onclick="redeemCode()">Redeem</button>
+      <p>Your points: <span id="pointsVIP">0</span></p>
+    </div>
 
-  <div id="settings" class="page" style="display:none">
-    <h2>⚙️ Settings</h2>
-    <label>
-      <input type="checkbox" id="friendlyMode" />
-      Enable Friendly Mode
-    </label>
-    <p>(Coming soon: chat filters, custom UI)</p>
+    <div id="settings" class="page" style="display:none">
+      <div class="pageTitle">⚙️ Settings</div>
+      <label>
+        <input type="checkbox" id="friendlyMode" />
+        Enable Friendly Mode
+      </label>
+      <p>(Coming soon: chat filters, custom UI)</p>
+    </div>
   </div>
   <script src="./script.js"></script>
 </body>

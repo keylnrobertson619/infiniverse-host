@@ -35,39 +35,32 @@ function showPage(pageId) {
   document.getElementById(pageId).style.display = "block";
   goBack();
 }
-let gameUrls = {
-    'snake': 'https://play.snake-game.io/',
-    'flappy': 'https://flappybird.io/',
-    'runner': 'https://games.cdn.famobi.com/html5games/p/pixel-runner/v200/?fg_domain=play.famobi.com',
-    'brick': 'https://games.cdn.famobi.com/html5games/b/brick-breaker/v040/?fg_domain=play.famobi.com',
-    '2048': 'https://play2048.co/',
-    'tic': 'https://playtictactoe.org/',
-    'mines': 'https://minesweeper.online/',
-    'space': 'https://playclassic.games/games/shoot-em-up/galaga/',
-    'frog': 'https://froggerclassic.appspot.com/',
-    'racing': 'https://html5.gamedistribution.com/rvvASMiB/36/',
-    'pong': 'https://ponggame.org/'
-};
+let games = ["Catch The Eggs", "Find The Rainbow", "Get Coins and Don't Die", "Guess The Number", "Memory", "Pong", "Puzzle", "Rock Paper Scissors", "Rolling for 20", "Simple but Hard", "Tic-Tac-Toe"];
 const gameList = document.getElementById("gameList");
-for (let [key, value] of Object.entries(gameUrls)) {
+games.forEach(game => {
   const card = document.createElement("div");
   card.className = "gameCard";
-  card.textContent = key;
-  card.onclick = () => {loadGame(key)};
+  card.textContent = game;
+  card.onclick = () => {loadGame("./Games/" + game + "/index.html")};
   gameList.appendChild(card);
-};
-function loadGame(game) {
-    if (gameUrls[game]) {
-        document.getElementById("gameList").style.display = "none";
-        document.getElementById("back-btn").style.display = "block";
-        document.getElementById("gameFrame").src = gameUrls[game];
-        document.getElementById("gameFrame").style.display = "block";
-    }
+});
+function loadGame(link) {
+  console.log(link)
+  document.querySelectorAll('.gameCard').forEach(card => {
+    card.style.fontSize = '12px';
+  });
+  document.getElementById("gameList").style.width = "120px";
+  document.getElementById("back-btn").style.display = "absolute";
+  document.getElementById("gameFrame").src = link;
+  document.getElementById("gameFrame").style.display = "block";
 }
 function goBack() {
-    document.getElementById("gameList").style.display = "flex";
-    document.getElementById("back-btn").style.display = "none";
-    document.getElementById("gameFrame").src = '';
-    document.getElementById("gameFrame").style.display = "none";
+  document.querySelectorAll('.gameCard').forEach(card => {
+    card.style.fontSize = '16px';
+  });
+  document.getElementById("gameList").style.width = "100%";
+  document.getElementById("back-btn").style.display = "none";
+  document.getElementById("gameFrame").src = '';
+  document.getElementById("gameFrame").style.display = "none";
 }
 updatePointsDisplays();

@@ -1,19 +1,52 @@
-html, body {
+html {
+  height: 100vh;
+  width: 100%;
+  background-color: lightgray;
+
+}
+
+body {
   font-family: 'Segoe UI', sans-serif;
   text-align: center;
-  background-color: #111;
+  background: radial-gradient(circle, #101010 0%, #050505 70%, #030303 100%);
   color: white;
-  margin: 0;
-  padding: 20px;
-  height: 100vh;
+  margin: 2px;
+  height: calc(100vh - 4px);
+  width: calc(100% - 4px);
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
+  border-radius: 5px;
+}
+#header {
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #222;
+  margin: 6px 6px 0 6px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
+#titlecontainer {
+  flex: 0 1 auto;
+  display: flex;
+  align-items: center; 
+}
+#title {
+  font-size: 32px;
+  margin: 10px 5px 0px 10px;
+  color: gold;
+}
+#subtitle {
+  size: 12px;
+  margin: auto auto 3.3px 0px;
+  color: azure;
+}
 #nav {
-  margin-bottom: 20px;
+  flex: 1 0 auto;
+  margin-bottom: 4px;
 }
-
 button {
   padding: 10px 15px;
   margin: 5px;
@@ -24,48 +57,73 @@ button {
   border-radius: 5px;
   cursor: pointer;
 }
-
 button:hover {
   background: lime;
 }
-
+#main {
+  flex: 1 0 auto;
+  margin: 0;
+  padding: 0;
+}
 #gameList {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
 }
 
 .gameCard {
-  width: 70px;
+  width: 120px;
   padding: 5px;
   background: hotpink;
   border: 2px solid purple;
   border-radius: 10px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  font-size: 16px;
 }
 
 .gameCard:hover {
   background: limegreen;
   color: black;
 }
-#page {
-  flex-grow: 1;
+.page {
+  height: 100%;
   display: flex;
   flex-direction: column;
+  margin: 0;
+  padding: 0;
 }
-    
-iframe { 
-  flex-grow: 1; 
+.pageTitle {
+  font-size: 24px;
+  margin: 5px;
+}
+#gamesContainer {
+  flex: 1 0 auto;
+  width: 100%;
+  height: 100%;
+}
+#gamesLowerContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+#gameFrame { 
   width: 100%; 
   height: 100%; 
-  border: none; 
+  border: 2px solid #333; 
   display: none; 
-  margin-top: 20px; 
+  margin: 10px; 
 }
 
 .back-btn { 
   display: none; 
+  top: -20px;
+  right: 0px;
   margin: 20px; 
   padding: 10px 20px; 
   background: red; 
