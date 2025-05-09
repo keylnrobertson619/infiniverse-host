@@ -5,13 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Infiniverse Host 🚀</title>
   <style>
-    body {
+    html, body {
       font-family: 'Segoe UI', sans-serif;
       text-align: center;
       background-color: #111;
       color: white;
       margin: 0;
       padding: 20px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     #nav {
@@ -53,7 +56,12 @@
       background: limegreen;
       color: black;
     }
-    iframe { width: 90%; height: 500px; border: none; display: none; margin-top: 20px; }
+    #page {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    iframe { flex-grow: 1; width: 90%; height: 500px; border: none; display: none; margin-top: 20px; }
     .back-btn { display: none; margin: 20px; padding: 10px 20px; background: red; color: white; border: none; cursor: pointer; }
   </style>
 </head>
@@ -67,8 +75,7 @@
     <button onclick="showPage('donate')">💰 Donate</button>
     <button onclick="showPage('vip')">⭐ VIP</button>
     <button onclick="showPage('settings')">⚙️ Settings</button>
-  </div>
-  <button class="back-btn" onclick="goBack()">🔙 Back to Menu</button>
+  </div> 
   <!-- Page Sections -->
   <div id="home" class="page">
     <h2>🎮 Welcome to Infiniverse!</h2>
@@ -78,6 +85,7 @@
   <div id="games" class="page" style="display:none">
     <h2>🎮 Game List</h2>
     <div id="gameList"></div>    
+    <button class="back-btn" onclick="goBack()">🔙 Back to Menu</button>
     <iframe id="gameFrame"></iframe>
   </div>
 
@@ -164,15 +172,15 @@
     function loadGame(game) {
         if (gameUrls[game]) {
             document.getElementById("gameList").style.display = "none";
-            document.getElementById(".back-btn").style.display = "block";
+            document.getElementById("back-btn").style.display = "block";
             document.getElementById("gameFrame").src = gameUrls[game];
             document.getElementById("gameFrame").style.display = "block";
         }
     }
 
     function goBack() {
-        document.getElementById("gaemlist").style.display = "black";
-        document.getElementById(".back-btn").style.display = "none";
+        document.getElementById("gameList").style.display = "black";
+        document.getElementById("back-btn").style.display = "none";
         document.getElementById("gameFrame").src = '';
         document.getElementById("gameFrame").style.display = "none";
     }
