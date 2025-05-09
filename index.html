@@ -41,10 +41,10 @@
     }
 
     .gameCard {
-      width: 200px;
-      padding: 10px;
-      background: #222;
-      border: 2px solid cyan;
+      width: 70px;
+      padding: 5px;
+      background: hotpink;
+      border: 2px solid purple;
       border-radius: 10px;
       cursor: pointer;
     }
@@ -59,7 +59,7 @@
 </head>
 <body>
   <h1>🚀 Infiniverse Host</h1>
-  <p>Create, play, and share your own games!</p>
+  <p>To Infinity and Beyond!!</p>
 
   <div id="nav">
     <button onclick="showPage('home')">🏠 Home</button>
@@ -78,6 +78,7 @@
   <div id="games" class="page" style="display:none">
     <h2>🎮 Game List</h2>
     <div id="gameList"></div>    
+    <iframe id="gameFrame"></iframe>
   </div>
 
   <div id="donate" class="page" style="display:none">
@@ -102,7 +103,6 @@
     </label>
     <p>(Coming soon: chat filters, custom UI)</p>
   </div>
-  <iframe id="gameFrame"></iframe>
   <script>
     let points = parseInt(localStorage.getItem("points")) || 100;
     const correctVIP = "VIPFREE";
@@ -140,7 +140,6 @@
       document.querySelectorAll('.page').forEach(p => p.style.display = "none");
       document.getElementById(pageId).style.display = "block";
     }
-    const gameList = document.getElementById("gameList");
     let gameUrls = {
         'snake': 'https://play.snake-game.io/',
         'flappy': 'https://flappybird.io/',
@@ -154,6 +153,7 @@
         'racing': 'https://html5.gamedistribution.com/rvvASMiB/36/',
         'pong': 'https://ponggame.org/'
     };
+    const gameList = document.getElementById("gameList");
     for (let [key, value] of Object.entries(gameUrls)) {
       const card = document.createElement("div");
       card.className = "gameCard";
@@ -163,17 +163,18 @@
     };
     function loadGame(game) {
         if (gameUrls[game]) {
+            document.getElementById("gamelist").style.display = "none";
+            document.getElementById(".back-btn").style.display = "block";
             document.getElementById("gameFrame").src = gameUrls[game];
             document.getElementById("gameFrame").style.display = "block";
-            document.querySelector("nav").style.display = "none";
-            document.querySelector(".back-btn").style.display = "block";
         }
     }
 
     function goBack() {
+        document.getElementById("gaemlist").style.display = "black";
+        document.getElementById(".back-btn").style.display = "none";
+        document.getElementById("gameFrame").src = '';
         document.getElementById("gameFrame").style.display = "none";
-        document.querySelector("nav").style.display = "flex";
-        document.querySelector(".back-btn").style.display = "none";
     }
     updatePointsDisplays();
   </script>
