@@ -61,7 +61,7 @@
       display: flex;
       flex-direction: column;
     }
-    iframe { flex-grow: 1; width: 90%; height: 500px; border: none; display: none; margin-top: 20px; }
+    iframe { flex-grow: 1; width: 100%; border: none; display: none; margin-top: 20px; }
     .back-btn { display: none; margin: 20px; padding: 10px 20px; background: red; color: white; border: none; cursor: pointer; }
   </style>
 </head>
@@ -179,7 +179,7 @@
     }
 
     function goBack() {
-        document.getElementById("gameList").style.display = "black";
+        document.getElementById("gameList").style.display = "block";
         document.getElementById("back-btn").style.display = "none";
         document.getElementById("gameFrame").src = '';
         document.getElementById("gameFrame").style.display = "none";
